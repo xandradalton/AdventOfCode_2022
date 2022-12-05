@@ -27,18 +27,16 @@ const fs = __importStar(require("fs"));
 const inputFile = process.argv[2];
 const rawData = fs.readFileSync(inputFile || 'inputTest.txt', 'utf8');
 const data = rawData.split('\n\n');
-let maxCalories = 0;
+let elfCalories = [];
 for (let i = 0; i < data.length; i++) {
     let elf = data[i].split("\n");
-    console.log(elf);
     let calories = 0;
     for (let i = 0; i < elf.length; i++) {
         calories = calories + Number(elf[i]);
     }
-    if (calories > maxCalories) {
-        maxCalories = calories;
-    }
-    console.log(calories);
+    elfCalories.push(calories);
 }
-console.log(maxCalories);
+let elfCaloriesSorted = elfCalories.sort((n1, n2) => n2 - n1);
+let calorieSum = elfCaloriesSorted.slice(0, 3).reduce((a, b) => a + b, 0);
+console.log(calorieSum);
 //# sourceMappingURL=index.js.map
