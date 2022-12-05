@@ -44,40 +44,45 @@ for (let i = 0; i < data.length; i++) {
     let score = 0;
     let me = roundArray[1];
     let them = roundArray[0];
-    if (me == "X") {
-        score++;
-        if (them == "A") {
-            score = score + 3;
+    let rock = 1;
+    let paper = 2;
+    let scissors = 3;
+    let win = 6;
+    let draw = 3;
+    if (them == "A") {
+        //them = rock
+        if (me == "X") {
+            score = score + scissors;
         }
-        if (them == "B") {
-            //lose
+        if (me == "Y") {
+            score = score + rock + draw;
         }
-        if (them == "C") {
-            score = score + 6;
-        }
-    }
-    if (me == "Y") {
-        score = score + 2;
-        if (them == "A") {
-            score = score + 6;
-        }
-        if (them == "B") {
-            score = score + 3;
-        }
-        if (them == "C") {
-            //lose
+        if (me == "Z") {
+            score = score + paper + win;
         }
     }
-    if (me == "Z") {
-        score = score + 3;
-        if (them == "A") {
-            //lose
+    if (them == "B") {
+        //them = paper
+        if (me == "X") {
+            score = score + rock;
         }
-        if (them == "B") {
-            score = score + 6;
+        if (me == "Y") {
+            score = score + paper + draw;
         }
-        if (them == "C") {
-            score = score + 3;
+        if (me == "Z") {
+            score = score + scissors + win;
+        }
+    }
+    if (them == "C") {
+        //them = scissors
+        if (me == "X") {
+            score = score + paper;
+        }
+        if (me == "Y") {
+            score = score + scissors + draw;
+        }
+        if (me == "Z") {
+            score = score + rock + win;
         }
     }
     totalScore += score;
